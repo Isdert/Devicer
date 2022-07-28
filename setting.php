@@ -36,6 +36,24 @@
 <br/>
 <div class="mdui-container">
 <div class="mdui-card">
+<form name="nick" action="operate.php" method="post">
+<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+<input type="hidden" name="as" value="nick">
+  <!-- 卡片的标题和副标题 -->
+  <div class="mdui-card-primary">
+    <div class="mdui-card-primary-title">设备名称</div>
+    <div class="mdui-card-primary-subtitle">修改设备名称</div>
+  </div>
+  <div class="mdui-card-content">
+  <div class="mdui-textfield">
+  <input name="nick" class="mdui-textfield-input" type="text" placeholder="输入新的设备名称"/>
+  </div>
+</div>
+  <!-- 卡片的按钮 -->
+  <div class="mdui-card-actions">
+    <button class="mdui-btn mdui-ripple">Confirm</button>
+  </div></form></div><br/>
+<div class="mdui-card">
   <!-- 卡片的标题和副标题 -->
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title">清空记录</div>

@@ -45,8 +45,8 @@ $result = mysqli_query($conn,$item);
 $row = mysqli_fetch_array($result);
 $items = $row[3];
 $item = json_decode($items,true);
-if($items!='{}'){
-foreach($item as $name=>$id){
+if($items!='[]'){
+foreach($item as $id=>$name){
 $n = base64_decode($name,true);
 echo '
 <div class="mdui-card">

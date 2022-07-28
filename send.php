@@ -48,10 +48,14 @@
     <div class="mdui-card-primary-title">发送到 
 <?php
 include('connect.php');
-$id = $_GET['id'];
-$result = mysqli_query($conn,"SELECT * FROM `user` where id = ".$id);
-@$row = mysqli_fetch_array($result);
-echo base64_decode($row[1],true);
+$info = $_COOKIE['device'];
+$info = json_decode($info,true);
+$myid = $info[0];
+$check = "SELECT * FROM `user` where id = ".$myid;
+$result = mysqli_query($conn,$check);
+$row = mysqli_fetch_array($result);
+$list = json_decode($row[3],true);
+echo base64_decode($list[$_GET['id']],true);
 ?>
     </div>
   </div>

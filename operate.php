@@ -48,7 +48,7 @@ if($_GET['as']=="new"){
 if($_GET['name']!=""&&$_GET['passwd']!=""){
 include('connect.php');
 $name = base64_encode($_GET['name']);
-$new = "INSERT INTO `user` (`id`, `name`, `passwd`, `item`) VALUES ('".$_GET['id']."', '".$name."', '".$_GET['passwd']."', '{}');";
+$new = "INSERT INTO `user` (`id`, `name`, `passwd`, `item`) VALUES ('".$_GET['id']."', '".$name."', '".$_GET['passwd']."', '[]');";
 if(mysqli_query($conn,$new)){
 $array = array($_GET['id'],$name);
 $json = json_encode($array);
@@ -99,7 +99,7 @@ $myid = $info[0];
 $myname = $info[1];
 $yoname = $row[1];
 $yoarr = json_decode($row[3],true);
-$yoarr[$myname] = $myid;
+$yoarr[$myid] = $myname;
 $yot = json_encode($yoarr);
 $update = "UPDATE `user` SET `item` = '".$yot."' WHERE `id` = ".$yoid;
 if(mysqli_query($conn,$update)){
@@ -107,7 +107,7 @@ $check = "SELECT * FROM `user` where id = ".$myid;
 $result = mysqli_query($conn,$check);
 $row = mysqli_fetch_array($result);
 $myarr = json_decode($row[3],true);
-$myarr[$yoname] = $yoid;
+$myarr[$yoid] = $yoname;
 $myt = json_encode($myarr);
 $update = "UPDATE `user` SET `item` = '".$myt."' WHERE `id` = ".$myid;
 if(mysqli_query($conn,$update)){
@@ -208,7 +208,7 @@ else{
 echo "清空记录失败";
 }
 }
-else if($_GET['as']="del"){
+else if($_GET['as']=="del"){
 include('connect.php');
 $yoid = $_GET['id'];
 $check = "SELECT * FROM `user` where id = ".$yoid;
@@ -221,7 +221,7 @@ $myid = $info[0];
 $myname = $info[1];
 $yoname = $row[1];
 $yoarr = json_decode($row[3],true);
-unset($yoarr[$myname]);
+unset($yoarr[$myid]);
 $yot = json_encode($yoarr);
 $update = "UPDATE `user` SET `item` = '".$yot."' WHERE `id` = ".$yoid;
 if(mysqli_query($conn,$update)){
@@ -229,22 +229,42 @@ $check = "SELECT * FROM `user` where id = ".$myid;
 $result = mysqli_query($conn,$check);
 $row = mysqli_fetch_array($result);
 $myarr = json_decode($row[3],true);
-unset($myarr[$yoname]);
+unset($myarr[$yoid]);
 $myt = json_encode($myarr);
 $update = "UPDATE `user` SET `item` = '".$myt."' WHERE `id` = ".$myid;
 if(mysqli_query($conn,$update)){
 echo "删除设备成功";
 }
 else{
-echo "删除设备错误";
+echo "删除设备失败";
 }
 }
 else{
-echo "删除设备错误";
+echo "删除设备失败";
 }
 }
 else{
 echo "错误,该设备不存在";
+}
+}
+else if($_POST['as']=="nick"){
+include('connect.php');
+$info = $_COOKIE['device'];
+$info = json_decode($info,true);
+$myid = $info[0];
+$check = "SELECT * FROM `user` where id = ".$myid;
+$result = mysqli_query($conn,$check);
+$row = mysqli_fetch_array($result);
+$myarr = json_decode($row[3],true);
+$yoid = $_POST['id'];
+$myarr[$yoid] = base64_encode($_POST['nick']);
+$myt = json_encode($myarr);
+$update = "UPDATE `user` SET `item` = '".$myt."' WHERE `id` = ".$myid;
+if(mysqli_query($conn,$update)){
+echo "修改设备备注成功";
+}
+else{
+echo "修改设备备注失败";
 }
 }
 ?>
