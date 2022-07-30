@@ -19,21 +19,21 @@
  <i class="mdui-icon material-icons">more_vert</i></a>
 <ul class="mdui-menu" id="example-attr">
   <li class="mdui-menu-item">
-    <a href="newdevice.php" class="mdui-ripple">New Device</a>
+    <a href="newdevice.php" class="mdui-ripple">添加设备</a>
   </li>
   <li class="mdui-menu-item">
-    <a href="setting.php" class="mdui-ripple">Account</a>
+    <a href="setting.php" class="mdui-ripple">账号设置</a>
   </li>
     <li class="mdui-menu-item">
-    <a href="https://github.com/crillerium/devicer/issues">Help & feedback</a>
+    <a href="https://github.com/crillerium/devicer/issues">报告错误</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="setting.php?id=<?php echo $_GET['id'] ?>" class="mdui-ripple">Device Setting</a>
+    <a href="setting.php?id=<?php echo $_GET['id'] ?>" class="mdui-ripple">设备设置</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="index.php" class="mdui-ripple">Home</a>
+    <a href="index.php" class="mdui-ripple">返回主页</a>
   </li>
 </ul>
 </div>
@@ -54,11 +54,28 @@ echo '<div class="mdui-card">
   <div class="mdui-card-primary">
     <div class="mdui-card-primary-title">收到的信息</div>
   </div>
-  <div class="mdui-card-content">'.base64_decode($row[3],true).'</div>
+  <div class="mdui-card-content">'.nl2br(base64_decode($row[3],true)).'</div>
   <!-- 卡片的按钮 -->
   <div class="mdui-card-actions">
-    <a href="send.php?id='.$_GET['id'].'" class="mdui-btn mdui-ripple">Reply</a>
-    <a href="operate.php?as=delete&id='.$row[0].'" class="mdui-btn mdui-ripple">Delete</a>
+    <a href="send.php?id='.$_GET['id'].'" class="mdui-btn mdui-ripple">回复</a>
+    <a href="operate.php?as=delete&id='.$row[0].'" class="mdui-btn mdui-ripple">删除</a>
+  </div>
+</div><br/>';
+}
+echo '<br/><div class="mdui-divider"></div><br/>';
+$receive = "SELECT * FROM `msgs` where `from` = ".$myid." and `to` = ".$yoid;
+$result = mysqli_query($conn,$receive);
+while($row = mysqli_fetch_array($result)){
+echo '<div class="mdui-card">
+  <!-- 卡片的标题和副标题 -->
+  <div class="mdui-card-primary">
+    <div class="mdui-card-primary-title">发送的信息</div>
+  </div>
+  <div class="mdui-card-content">'.nl2br(base64_decode($row[3],true)).'</div>
+  <!-- 卡片的按钮 -->
+  <div class="mdui-card-actions">
+    <a href="send.php?id='.$_GET['id'].'" class="mdui-btn mdui-ripple">追加</a>
+    <a href="operate.php?as=delete&id='.$row[0].'" class="mdui-btn mdui-ripple">删除</a>
   </div>
 </div><br/>';
 }
