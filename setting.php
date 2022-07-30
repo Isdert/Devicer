@@ -51,7 +51,7 @@
 </div>
   <!-- 卡片的按钮 -->
   <div class="mdui-card-actions">
-    <button class="mdui-btn mdui-ripple">Confirm</button>
+    <button class="mdui-btn mdui-ripple">修改</button>
   </div></form></div><br/>
 <div class="mdui-card">
   <!-- 卡片的标题和副标题 -->
@@ -60,7 +60,7 @@
     <div class="mdui-card-primary-subtitle">此操作会清空向你发送的信息</div>
   </div>
   <div class="mdui-card-actions">
-    <a href="operate.php?as=empty&id=<?php echo $_GET['id'] ?>" class="mdui-btn mdui-ripple">Empty</a>
+    <a href="operate.php?as=empty&id=<?php echo $_GET['id'] ?>" class="mdui-btn mdui-ripple">清空</a>
   </div>
 </div><br/>
 <div class="mdui-card">
@@ -70,7 +70,7 @@
     <div class="mdui-card-primary-subtitle">此操作会将此设备从列表中移除并清空记录</div>
   </div>
   <div class="mdui-card-actions">
-    <a href="operate.php?as=del&id=<?php echo $_GET['id'] ?>" class="mdui-btn mdui-ripple">Delete</a>
+    <a href="operate.php?as=del&id=<?php echo $_GET['id'] ?>" class="mdui-btn mdui-ripple">删除</a>
   </div>
 </div>
 <br/>

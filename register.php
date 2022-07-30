@@ -19,17 +19,17 @@
  <i class="mdui-icon material-icons">more_vert</i></a>
 <ul class="mdui-menu" id="example-attr">
   <li class="mdui-menu-item" disabled>
-    <a href="#" class="mdui-ripple">New Device</a>
+    <a href="#" class="mdui-ripple">添加设备</a>
   </li>
   <li class="mdui-menu-item" disabled>
-    <a href="#" class="mdui-ripple">Account</a>
+    <a href="#" class="mdui-ripple">账号设置</a>
   </li>
     <li class="mdui-menu-item">
-    <a href="https://github.com/crillerium/devicer/issues">Help & feedback</a>
+    <a href="https://github.com/crillerium/devicer/issues">报告错误</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="index.php" class="mdui-ripple">Home</a>
+    <a href="index.php" class="mdui-ripple">返回主页</a>
   </li>
 </ul>
 </div>
@@ -44,7 +44,7 @@
   </div>
   <!-- 卡片的按钮 -->
   <div class="mdui-card-actions">
-    <a href="register.php?as=new" class="mdui-btn mdui-ripple">Start</a>
+    <a href="register.php?as=new" class="mdui-btn mdui-ripple">注册</a>
   </div>
 </div><br/>
 
@@ -82,8 +82,8 @@ echo <<<new2
   </div>
       </p>
       <div class="mdui-panel-item-actions">
-        <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
-        <input type="submit" name="go" class="mdui-btn mdui-ripple" value="continue">
+        <a href="register.php" class="mdui-btn mdui-ripple" mdui-panel-item-close>取消</a>
+        <input type="submit" name="go" class="mdui-btn mdui-ripple" value="登录">
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@ new2;
   </div>
   <!-- 卡片的按钮 -->
   <div class="mdui-card-actions">
-    <a href=" register.php?as=old" class="mdui-btn mdui-ripple">Start</a>
+    <a href=" register.php?as=old" class="mdui-btn mdui-ripple">登录</a>
   </div>
 </div><br/>
 
@@ -126,9 +126,9 @@ echo <<<old
   </div>
       </p>
       <div class="mdui-panel-item-actions">
-        <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
+        <a href="register.php" class="mdui-btn mdui-ripple" mdui-panel-item-close>取消<a>
         <input type="hidden" name="as" value="old">
-        <input type="submit" name="go" class="mdui-btn mdui-ripple" value="continue">
+        <input type="submit" name="go" class="mdui-btn mdui-ripple" value="登录">
       </div>
     </div>
   </div>
@@ -138,10 +138,6 @@ old;
 }
 ?>
 </div>
-
-
-
-    <!-- MDUI JavaScript -->
-    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
   </body>
 </html>

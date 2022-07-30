@@ -19,17 +19,17 @@
  <i class="mdui-icon material-icons">more_vert</i></a>
 <ul class="mdui-menu" id="example-attr">
   <li class="mdui-menu-item">
-    <a href="newdevice.php" class="mdui-ripple">New Device</a>
+    <a href="newdevice.php" class="mdui-ripple">添加设备</a>
   </li>
   <li class="mdui-menu-item">
-    <a href="account.php" class="mdui-ripple">Account</a>
+    <a href="account.php" class="mdui-ripple">账号设置</a>
   </li>
     <li class="mdui-menu-item">
-    <a href="https://github.com/crillerium/devicer/issues">Help & Feedback</a>
+    <a href="https://github.com/crillerium/devicer/issues">报告错误</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="index.php" class="mdui-ripple">Home</a>
+    <a href="index.php" class="mdui-ripple">返回主页</a>
   </li>
 </ul>
 </div>
@@ -200,9 +200,15 @@ $info = $_COOKIE['device'];
 $info = json_decode($info,true);
 $myid = $info[0];
 $yoid = $_GET['id'];
-$empty = "DELETE FROM `msgs` WHERE `from` = ".$yoid." and `to` = ".$myid;
-if(mysqli_query($conn,$empty)){
+$emptyy = "DELETE FROM `msgs` WHERE `from` = ".$yoid." and `to` = ".$myid;
+$emptym = "DELETE FROM `msgs` WHERE `from` = ".$myid." and `to` = ".$yoid;
+if(mysqli_query($conn,$emptyy)){
+if(mysqli_query($conn,$emptym)){
 echo "清空记录成功";
+}
+else{
+echo "清空记录失败";
+}
 }
 else{
 echo "清空记录失败";
@@ -220,6 +226,10 @@ $info = json_decode($info,true);
 $myid = $info[0];
 $myname = $info[1];
 $yoname = $row[1];
+$emptyy = "DELETE FROM `msgs` WHERE `from` = ".$yoid." and `to` = ".$myid;
+$emptym = "DELETE FROM `msgs` WHERE `from` = ".$myid." and `to` = ".$yoid;
+if(mysqli_query($conn,$emptyy)){
+if(mysqli_query($conn,$emptym)){
 $yoarr = json_decode($row[3],true);
 unset($yoarr[$myid]);
 $yot = json_encode($yoarr);
@@ -234,6 +244,14 @@ $myt = json_encode($myarr);
 $update = "UPDATE `user` SET `item` = '".$myt."' WHERE `id` = ".$myid;
 if(mysqli_query($conn,$update)){
 echo "删除设备成功";
+}
+else{
+echo "删除设备失败";
+}
+}
+else{
+echo "删除设备失败";
+}
 }
 else{
 echo "删除设备失败";

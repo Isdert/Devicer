@@ -61,8 +61,8 @@ echo base64_decode($list[$_GET['id']],true);
   </div>
   <div class="mdui-card-content">
   <div class="mdui-textfield mdui-textfield-floating-label">
-  <label class="mdui-textfield-label">Message</label>
-  <textarea name="msg" class="mdui-textfield-input"></textarea>
+  <label class="mdui-textfield-label">输入文本</label>
+  <textarea name="msg" wrap="soft" class="mdui-textfield-input"></textarea>
 </div></div>
   <div class="mdui-card-actions">
     <button class="mdui-btn mdui-ripple">发送</button>
