@@ -71,7 +71,7 @@ $check = "SELECT * FROM `user` where id = ".$_GET['id'];
 $result = mysqli_query($conn,$check);
 @$row = mysqli_fetch_array($result);
 if($row[2]==$_GET['passwd']){
-$name = base64_encode($row[1]);
+$name = $row[1];
 $array = array($_GET['id'],$name);
 $json = json_encode($array);
 if(setcookie("device",$json,time()+31536000)){
