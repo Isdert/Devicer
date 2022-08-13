@@ -19,21 +19,21 @@
  <i class="mdui-icon material-icons">more_vert</i></a>
 <ul class="mdui-menu" id="example-attr">
   <li class="mdui-menu-item">
-    <a href="newdevice.php" class="mdui-ripple">New Device</a>
+    <a href="newdevice.php" class="mdui-ripple">添加设备</a>
   </li>
   <li class="mdui-menu-item">
-    <a href="account.php" class="mdui-ripple">Account</a>
+    <a href="account.php" class="mdui-ripple">账号设置</a>
   </li>
     <li class="mdui-menu-item">
-    <a href="https://github.com/crillerium/devicer/issues">Help & feedback</a>
+    <a href="https://github.com/crillerium/devicer/issues">报告错误</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="setting.php?id=<?php echo $_GET['id'] ?>" class="mdui-ripple">Device Setting</a>
+    <a href="setting.php?id=<?php echo $_GET['id'] ?>" class="mdui-ripple">设备设置</a>
   </li>
   <li class="mdui-divider"></li>
   <li class="mdui-menu-item">
-    <a href="index.php" class="mdui-ripple">Home</a>
+    <a href="index.php" class="mdui-ripple">返回主页</a>
   </li>
 </ul>
 </div>
